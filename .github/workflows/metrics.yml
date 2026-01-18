@@ -110,7 +110,7 @@ jobs:
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
             gnuplot, typescript, javascript, tsx
           plugin_languages_indepth: yes
-          plugin_languages_aliases: TSX:TypeScript javascript:TypeScript/JavaScript TypeScript:TypeScript/JavaScript
+          plugin_languages_aliases: TSX:typescript javascript:'TypeScript/JavaScript' typescript:'TypeScript/JavaScript'
           plugin_languages_details: lines, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 15
