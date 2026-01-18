@@ -114,7 +114,7 @@ jobs:
             javascript:JS/TS,
             typescript:JS/TS,
             TSX:JS/TS
-          plugin_languages_colors: "JS/TS:#F0DB4F"
+          plugin_languages_colors: "JS/TS:#f1e05a"
           plugin_languages_details: lines, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 15
