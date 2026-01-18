@@ -45,6 +45,10 @@ jobs:
       steps:
         - uses: lowlighter/metrics@latest
           with:
+            optimize: svg
+            
+            repositories_forks: yes
+            
             filename: achievements.svg
             token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
             base: ""
