@@ -108,9 +108,9 @@ jobs:
           plugin_languages_sections: most-used
           plugin_languages_ignored: >-
             html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
-            gnuplot
+            gnuplot, typescript, javascript, tsx
           plugin_languages_indepth: yes
-          plugin_languages_aliases: TSX:TypeScript JavaScript:TypeScript/JavaScript TypeScript:TypeScript/JavaScript
+          plugin_languages_aliases: TSX:TypeScript javascript:TypeScript/JavaScript TypeScript:TypeScript/JavaScript
           plugin_languages_details: lines, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 15
