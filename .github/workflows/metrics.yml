@@ -45,8 +45,13 @@ jobs:
       steps:
         - uses: lowlighter/metrics@latest
           with:
-            optimize: svg
-            
+            optimize: svg, css, xml
+            use_prebuilt_image: yes
+            config_output: svg
+            config_timezone: Asia/Bangkok
+
+            base_indepth: yes
+            repositories_affiliations: owner, collaborator, organization_member
             repositories_forks: yes
             
             filename: achievements.svg
