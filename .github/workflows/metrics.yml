@@ -43,7 +43,8 @@ jobs:
           contents: write
 
       steps:
-        - uses: lowlighter/metrics@latest
+        - name: Achievements Metrics
+          uses: lowlighter/metrics@latest
           with:
             optimize: svg, css, xml
             use_prebuilt_image: yes
@@ -63,3 +64,31 @@ jobs:
               scripter, packager, explorer, infographile, manager
             plugin_achievements_display: compact
             plugin_achievements_threshold: X
+
+  isocalender-metrics:
+    runs-on: ubuntu-latest
+    
+    environment: 
+      name: production
+      
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Calender Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          optimize: svg, css, xml
+          use_prebuilt_image: yes
+          config_output: svg
+          config_timezone: Asia/Bangkok
+
+          base_indepth: yes
+          repositories_affiliations: owner, collaborator, organization_member
+          repositories_forks: yes
+        
+          filename: isocalender.svg
+          token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
+          base: ""
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
