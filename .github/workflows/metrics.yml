@@ -111,10 +111,11 @@ jobs:
             gnuplot
           plugin_languages_indepth: yes
           plugin_languages_aliases: >-
-            javascript:JS/TS,
-            typescript:JS/TS,
-            TSX:JS/TS
-          plugin_languages_colors: "JS/TS:#f1e05a"
+            javascript:JavaScript/TypeScript,
+            typescript:JavaScript/TypeScript,
+            TSX:JavaScript/TypeScript
+          plugin_languages_colors: >-
+            JavaScript/TypeScript:yellow
           plugin_languages_details: lines, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 15
