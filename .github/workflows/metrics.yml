@@ -104,7 +104,7 @@ jobs:
           config_timezone: Asia/Bangkok
           extras_css: |
             .field.language.details small {
-              margin-left: 16px;
+              margin-left: 0.5rem;
             }
             .row {
               display: flex;
