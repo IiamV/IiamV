@@ -31,15 +31,18 @@ jobs:
         - name: Achievements Metrics
           uses: lowlighter/metrics@latest
           with:
+            # Core Content
             optimize: svg, css, xml
             use_prebuilt_image: yes
             config_output: svg
             config_timezone: Asia/Bangkok
-
+  
+            # Base Content
             base_indepth: yes
             repositories_affiliations: owner, collaborator, organization_member
             repositories_forks: yes
-            
+  
+            # Specific Plugin Content
             filename: achievements.svg
             token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
             base: ""
@@ -63,15 +66,18 @@ jobs:
       - name: Calender Metrics
         uses: lowlighter/metrics@latest
         with:
+          # Core Content
           optimize: svg, css, xml
           use_prebuilt_image: yes
           config_output: svg
           config_timezone: Asia/Bangkok
 
+          # Base Content
           base_indepth: yes
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: yes
-        
+
+          # Specific Plugin Content
           filename: isocalender.svg
           token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
           base: ""
@@ -91,15 +97,29 @@ jobs:
       - name: Languages Metrics
         uses: lowlighter/metrics@latest
         with:
+          # Core Content
           optimize: svg, css, xml
           use_prebuilt_image: yes
           config_output: svg
           config_timezone: Asia/Bangkok
+          extras_css: |
+            .field.language.details small {
+              margin-left: 16px;
+            }
+            .row {
+              display: flex;
+              flex-direction: column;
+            }
+            .row section {
+              flex: none;
+            }
 
+          # Base Content
           base_indepth: yes
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: yes
-        
+
+          # Specific Plugin Content
           filename: languages.svg
           token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
           base: ""
