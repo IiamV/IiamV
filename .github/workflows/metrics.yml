@@ -5,7 +5,7 @@ name: Metrics
 on:
   # Schedule daily updates
   schedule: 
-    - cron: "0 0 * * *"
+    - cron: "0 0 1 * *"
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
@@ -139,3 +139,41 @@ jobs:
           plugin_languages_details: lines, percentage
           plugin_languages_limit: 8
           plugin_languages_analysis_timeout: 15
+
+  wakatime-metrics:
+    runs-on: ubuntu-latest
+    
+    environment: 
+      name: production
+      
+    permissions:
+      contents: write
+      
+    steps:
+      - name: WakaTime Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          # Core Content
+          optimize: svg, css, xml
+          use_prebuilt_image: yes
+          config_output: svg
+          config_timezone: Asia/Bangkok
+
+          # Base Content
+          base_indepth: yes
+          repositories_affiliations: owner, collaborator, organization_member
+          repositories_forks: yes
+
+          # Specific Plugin Content
+          filename: wakatime.svg
+          base: ""
+          plugin_wakatime: yes
+          plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
+          plugin_wakatime_url: https://wakatime.com
+          plugin_wakatime_user: current
+          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, editors-graphs, os, os-graphs
+          plugin_wakatime_days: 7
+          plugin_wakatime_limit: 5
+          plugin_wakatime_languages_other: no
+          plugin_wakatime_languages_ignored: 
+          plugin_wakatime_repositories_visibility: all
