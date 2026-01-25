@@ -177,3 +177,37 @@ jobs:
           plugin_wakatime_languages_other: no
           plugin_wakatime_languages_ignored: 
           plugin_wakatime_repositories_visibility: all
+
+  leetcode-metrics:
+    runs-on: ubuntu-latest
+    
+    environment: 
+      name: production
+      
+    permissions:
+      contents: write
+      
+    steps:
+      - name: LeetCode Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          # Core Content
+          optimize: svg, css, xml
+          use_prebuilt_image: yes
+          config_output: svg
+          config_timezone: Asia/Bangkok
+
+          # Base Content
+          base_indepth: yes
+          repositories_affiliations: owner, collaborator, organization_member
+          repositories_forks: yes
+
+          # Specific Plugin Content
+          filename: leetcode.svg
+          base: ""
+          plugin_leetcode: yes
+          plugin_leetcode_user: → User login
+          plugin_leetcode_sections: solved, skills, recent
+          plugin_leetcode_limit_skills: 10
+          plugin_leetcode_ignored_skills:
+          plugin_leetcode_limit_recent: 2
