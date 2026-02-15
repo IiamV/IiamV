@@ -1,56 +1,63 @@
+# Workflow name displayed in GitHub Actions
 name: Metrics
 
 # Controls when the workflow will run
 on:
-  # Schedule daily updates
+  # Run automatically at 00:00 UTC on the 1st day of every month
   schedule: 
     - cron: "0 0 1 * *"
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  
+  # Run on pushes to the main branch
+  # push:
+  #  branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Run on pull requests targeting main (useful for preview/testing)
+  # pull_request:
+  #   branches: [ "main" ]
+
+  # Allow manual execution from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a job called "github-metrics"
   achievements-metrics:
-      runs-on: ubuntu-latest
-      
-      environment:
-          name: production
+    # GitHub-hosted Linux runner
+    runs-on: ubuntu-latest  
 
-      permissions: 
-          contents: write
+    # Enables environment-level secrets & protections
+    environment:
+      name: production  
 
-      steps:
-        - name: Achievements Metrics
-          uses: lowlighter/metrics@latest
-          with:
-            # Core Content
-            optimize: svg, css, xml
-            use_prebuilt_image: yes
-            config_output: svg
-            config_timezone: Asia/Bangkok
-  
-            # Base Content
-            base_indepth: yes
-            repositories_affiliations: owner, collaborator, organization_member
-            repositories_forks: yes
-  
-            # Specific Plugin Content
-            filename: achievements.svg
-            token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
-            base: ""
-            plugin_achievements: yes
-            plugin_achievements_only: >-
-              polyglot, stargazer, sponsor, deployer, member, maintainer, developer,
-              scripter, packager, explorer, infographile, manager
-            plugin_achievements_display: compact
-            plugin_achievements_threshold: X
+    # Required to commit generated SVG files
+    permissions:
+      contents: write  
+
+    steps:
+      - name: Achievements Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          # --- Core Content Settings ---
+          optimize: svg, css, xml
+          use_prebuilt_image: yes
+          config_output: svg
+          config_timezone: Asia/Bangkok
+
+          # --- Base Content Settings ---
+          base_indepth: yes
+          repositories_affiliations: owner, collaborator, organization_member
+          repositories_forks: yes
+
+          # --- Specific Plugin Content ---
+          filename: achievements.svg
+          token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
+          base: ""
+          plugin_achievements: yes
+          plugin_achievements_only: >-
+            polyglot, stargazer, sponsor, deployer, member, maintainer, developer,
+            scripter, packager, explorer, infographile, manager
+          plugin_achievements_display: compact
+          plugin_achievements_threshold: X
 
   isocalender-metrics:
     runs-on: ubuntu-latest
@@ -65,18 +72,18 @@ jobs:
       - name: Calender Metrics
         uses: lowlighter/metrics@latest
         with:
-          # Core Content
+          # --- Core Content Settings ---
           optimize: svg, css, xml
           use_prebuilt_image: yes
           config_output: svg
           config_timezone: Asia/Bangkok
 
-          # Base Content
+          # --- Base Content Settings ---
           base_indepth: yes
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: yes
 
-          # Specific Plugin Content
+          # --- Specific Plugin Content ---
           filename: isocalender.svg
           token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
           base: ""
@@ -96,7 +103,7 @@ jobs:
       - name: Languages Metrics
         uses: lowlighter/metrics@latest
         with:
-          # Core Content
+          # --- Core Content Settings ---
           optimize: svg, css, xml
           use_prebuilt_image: yes
           config_output: svg
@@ -113,12 +120,12 @@ jobs:
               flex: none;
             }
 
-          # Base Content
+          # --- Base Content Settings ---
           base_indepth: yes
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: yes
 
-          # Specific Plugin Content
+          # --- Specific Plugin Content ---
           filename: languages.svg
           token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
           base: ""
@@ -152,18 +159,18 @@ jobs:
       - name: WakaTime Metrics
         uses: lowlighter/metrics@latest
         with:
-          # Core Content
+          # --- Core Content Settings ---
           optimize: svg, css, xml
           use_prebuilt_image: yes
           config_output: svg
           config_timezone: Asia/Bangkok
 
-          # Base Content
+          # --- Base Content Settings ---
           base_indepth: yes
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: yes
 
-          # Specific Plugin Content
+          # --- Specific Plugin Content ---
           filename: wakatime.svg
           base: ""
           plugin_wakatime: yes
@@ -190,18 +197,18 @@ jobs:
       - name: LeetCode Metrics
         uses: lowlighter/metrics@latest
         with:
-          # Core Content
+          # --- Core Content Settings ---
           optimize: svg, css, xml
           use_prebuilt_image: yes
           config_output: svg
           config_timezone: Asia/Bangkok
 
-          # Base Content
+          # --- Base Content Settings ---
           base_indepth: yes
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: yes
 
-          # Specific Plugin Content
+          # --- Specific Plugin Content ---
           filename: leetcode.svg
           base: ""
           plugin_leetcode: yes
@@ -224,18 +231,18 @@ jobs:
       - name: Lines of Code Metrics
         uses: lowlighter/metrics@latest
         with:
-          # Core Content
+          # --- Core Content Settings ---
           optimize: svg, css, xml
           use_prebuilt_image: yes
           config_output: svg
           config_timezone: Asia/Bangkok
 
-          # Base Content
+          # --- Base Content Settings ---
           base_indepth: yes
           repositories_affiliations: owner, collaborator, organization_member
           repositories_forks: yes
 
-          # Specific Plugin Content
+          # --- Specific Plugin Content ---
           filename: codelines.svg
           token: ${{ secrets.ACCESS_TOKEN_CLASSIC }}
           base: ""
