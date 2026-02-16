@@ -1,4 +1,5 @@
-## Hi there 👋
+<!--## Hi there 👋-->
+![Achievements SVG](./achievements.svg)
 
 <!--
 **IiamV/IiamV** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
